@@ -22,4 +22,7 @@ mkdir /mnt/efi
 mount ${part_boot} /mnt/boot
 pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
-
+arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+arch-chroot /mnt hwclock --systohc
+arch-chroot /mnt locale-gen
+arch-chroot /mnt echo "LANG=fr_FR.UTF-8" > /etc/locale.conf
