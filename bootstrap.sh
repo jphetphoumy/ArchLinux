@@ -5,8 +5,6 @@
 timedatectl set-ntp true
 hostname=$(dialog --stdout --inputbox "Set hostname Hostname:" 0 0) || exit 1
 : ${hostname:?"hostname cannot be empty"}
-password=$(dialog --stdout --passwordbox --insecure --clear "Set password :" 0 0) || exit 1
-: ${password:?"password cannot be empty"}
 devicelist=$(lsblk -dplnx size -o name,size | grep -Ev "boot|loop|rpmb" | tac)
 device=$(dialog --stdout --menu "Select installation disk" 0 0 0 ${devicelist}) || exit 1
 parted --script "${device}" -- mklabel gpt \
