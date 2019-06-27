@@ -18,9 +18,9 @@ part_root="${device}2"
 mkfs.fat -F32 ${part_boot}
 mkfs.ext4 ${part_root}
 mount ${part_root} /mnt
-mkdir /mnt/boot/efi
+mkdir /mnt/boot/efi -p 
 mount -t vfat ${part_boot} /mnt/boot/efi
-mkdir /mnt/efi/EFI
+mkdir /mnt/boot/efi/EFI
 grub-install --target=x86_64-efi --efi-directory=/mnt/boot/efi --bootloader-id=arch_grub --recheck
 pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
