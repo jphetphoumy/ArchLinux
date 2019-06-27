@@ -22,15 +22,16 @@ mkdir /mnt/boot/efi
 mount -t vfat ${part_boot} /mnt/boot/efi
 mkdir /mnt/efi/EFI
 grub-install --target=x86_64-efi --efi-directory=/mnt/boot/efi --bootloader-id=arch_grub --recheck
-grub-mkconfig -o /mnt/boot/grub/grub.cfg
 pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
+arch-chroot /mnt pacman -S grub efibootmgr git ansible --noconfirm
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
 arch-chroot /mnt hwclock --systohc
 arch-chroot /mnt locale-gen
 arch-chroot /mnt echo "LANG=fr_FR.UTF-8" > /etc/locale.conf
-arch-chroot /mnt echo KEYMAP=fr > /etc/vconsole.conf
+arch-chroot /mnt echo KEYMAP=fr-latin9 > /etc/vconsole.conf
 arch-chroot /mnt echo $hostname > /etc/hostname
 arch-chroot /mnt echo "127.0.1.1 ${hostname}.localdomain ${hostname}" >> /etc/hosts
 arch-chroot /mnt mkinitcpio -p linux 
 arch-chroot /mnt echo "root:changeme" | chpasswd
+arch-chroot /mnt grub-mkconfig -o /mnt/boot/grub/grub.cfg
