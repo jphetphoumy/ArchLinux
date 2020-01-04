@@ -24,7 +24,7 @@ mkdir /mnt/boot/efi/EFI -p
 grub-install --target=x86_64-efi --boot-directory=/mnt/boot --efi-directory=/mnt/boot/efi --bootloader-id=arch_grub --recheck
 pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt pacman -S grub efibootmgr git ansible mkinitcpio grub-mkconfig --noconfirm
+arch-chroot /mnt pacman -S grub efibootmgr git ansible mkinitcpio --noconfirm
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
 arch-chroot /mnt hwclock --systohc
 arch-chroot /mnt locale-gen
