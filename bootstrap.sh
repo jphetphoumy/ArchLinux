@@ -23,7 +23,7 @@ mount ${part_root} /mnt
 mkdir /mnt/boot/efi -p 
 mount -t vfat ${part_boot} /mnt/boot/efi
 mkdir /mnt/boot/efi/EFI -p 
-grub-install --target=x86_64-efi --boot-directory=/mnt/boot --efi-directory=/mnt/boot/efi --bootloader-id=arch_grub --recheck
+grub-install --target=x86_64-efi --boot-directory=/mnt/boot --efi-directory=/mnt/boot/efi --bootloader-id=ArchLinux --recheck
 pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt pacman -S grub efibootmgr git ansible vim --noconfirm
