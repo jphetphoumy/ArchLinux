@@ -28,7 +28,7 @@ mkfs.fat -F32 ${part_efi}
 mkfs.ext4 ${part_root}
 
 mount ${part_root} /mnt
-
+mkdir /mnt/efi
 mount ${part_efi} /mnt/efi
 
 pacstrap /mnt base linux linux-firmware git ansible efibootmgr grub wpa_supplicant dhcpcd
