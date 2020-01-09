@@ -31,7 +31,7 @@ mount ${part_root} /mnt
 
 mount ${part_efi} /mnt/efi
 
-pacstrap /mnt base linux linux-firmware git ansible efibootmgr
+pacstrap /mnt base linux linux-firmware git ansible efibootmgr grub wpa_supplicant dhcpcd
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
 arch-chroot /mnt hwclock --systohc
