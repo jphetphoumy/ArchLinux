@@ -29,7 +29,7 @@ arch-chroot /mnt hwclock --systohc
 arch-chroot /mnt hwclock --systohc
 arch-chroot /mnt sed -i 's/#\(fr_FR\.UTF-8\)/\1/' /etc/locale.gen
 arch-chroot /mnt locale-gen
-arch-chroot /mnt echo "KEYMAP=fr-latin9"
+arch-chroot /mnt echo "KEYMAP=fr-latin9" > /etc/vconsole.conf
 arch-chroot /mnt echo "Devbox" > /etc/hostname
 arch-chroot /mnt echo "127.0.0.1	localhost" >> /etc/hosts
 arch-chroot /mnt echo "::1	localhost" >> /etc/hosts
