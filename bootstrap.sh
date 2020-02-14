@@ -36,6 +36,7 @@ cat << EOF >> /etc/hosts
 ::1	localhost
 127.0.1.1	Devbox.localdomain	Devbox
 EOF
-echo "root:changeme" | chpasswd --root /mnt
+arch-chroot /mnt echo "root:changeme" | chpasswd
+
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=efi --bootloader-id=GRUB
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
